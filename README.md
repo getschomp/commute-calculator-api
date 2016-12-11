@@ -11,7 +11,9 @@ Make sure you have:
 
 * Database: `Postgresql`
 
-* Database initialization: `$rake db:migrate`
+* Database initialization:
+  `$ rake db:create`
+  `$ rake db:migrate`
 
 * Run the server with: `rails s` and navigate to `http://localhost:3001`
 (The default port is set to 3001 so that a second server can be easily run alongside the api using rails defaults)

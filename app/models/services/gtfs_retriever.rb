@@ -3,7 +3,7 @@ require 'csv'
 require 'open-uri'
 require 'uri'
 
-class GtfsRetriever
+class GtfsFetcher
   # gets the mbta schedule data from a file source and saves it in assets
 
   attr_reader :local_path
