@@ -1,24 +1,23 @@
-# README
+# Commute Calculator Api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A REST api to parse and return and transverse a public transportation graph.
 
-Things you may want to cover:
+## Up and Running
 
-* Ruby version
+Make sure you have:
+* Ruby version: `2.3.1`
 
-* System dependencies
+* Rails version: `5`
 
-* Configuration
+* Database: `Postgresql`
 
-* Database creation
+* Database initialization: `$rake db:migrate`
 
-* Database initialization
+* Run the server with: `rails s` and navigate to `http://localhost:3001`
+(The default port is set to 3001 so that a second server can be easily run alongside the api using rails defaults)
 
-* How to run the test suite
+* Run the tests with: `rspec spec`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Services
 
-* Deployment instructions
-
-* ...
+* Services (job queues, cache servers, search engines, etc.) TBD
