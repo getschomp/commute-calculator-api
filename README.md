@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/repos/5855b969bd6f982c76005070/badges/21e0aa7200a802977aae/gpa.svg)](https://codeclimate.com/repos/5855b969bd6f982c76005070/feed)
+[![Build Status](https://travis-ci.org/getschomp/commute-calculator-api.svg?branch=master)](https://travis-ci.org/getschomp/commute-calculator-api)
 
 # Commute Calculator Api
 
