@@ -53,13 +53,17 @@ module Services
     end
 
     def last_gtfs_version
-      File.new(version_path, "w+") unless File.exists?(version_path)
+      make_version_file_if_needed
       IO.read(version_path)
     end
 
     def store_version(version)
-      File.new(version_path, "w+") unless File.exists?(version_path)
+      make_version_file_if_needed
       File.open(version_path, 'w') { |f| f.write(version) }
+    end
+
+    def make_version_file_if_needed
+      File.new(version_path, "w+") unless File.exist?(version_path)
     end
 
     def feed_info_path
