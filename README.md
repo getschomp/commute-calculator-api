@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/repos/5855b969bd6f982c76005070/badges/21e0aa7200a802977aae/gpa.svg)](https://codeclimate.com/repos/5855b969bd6f982c76005070/feed)
+
 # Commute Calculator Api
 
 A REST api designed to parse and transverse a public transportation graph and make recommendations on where a person or group of people should live based on supplied parameters. This api will back a commute calculator ui that will supply to the user geometrical definitions of areas of the a city based on various parameters that the user inputs.
