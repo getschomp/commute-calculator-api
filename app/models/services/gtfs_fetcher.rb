@@ -8,24 +8,11 @@ module Services
 
     attr_reader :local_path
 
-    # For now this is a constant based of the paths to MBTA data.
-    # Since the GTFS spec is the same for most major cities,
-    # In the future, many Gtfs Retrievers may be initalized with various
-    # @paths instance variables rathere than this constant
-    PATHS = {
-      source: {
-        root: 'http://www.mbta.com/uploadedfiles/',
-        gtfs_suffix: 'MBTA_GTFS.zip',
-        feed_info_suffix: 'feed_info.txt'
-      },
-      local: {
-        root: Pathname.getwd.to_s + "/db/csvs/",
-        gtfs_suffix: 'mbta.zip',
-        version_suffix: 'version.csv'
-      }
-    }.freeze
+    def initialize(paths)
+      @paths = paths
+    end
 
-    def call
+    def run
       @current_version = current_gtfs_version
       @last_version = last_gtfs_version
       @local_path = local_gtfs_path
@@ -35,6 +22,27 @@ module Services
       end
       self
     end
+
+    # For now this is a class method initalized based of the @paths to MBTA data.
+    # Since the GTFS spec is the same for most major cities,
+    # In the future, many Gtfs Fetchers may be initalized with various
+    # @paths based on a json file or similar
+    # TODO: see if there is a source api to call that has an index of paths
+    def self.run_for_mbta
+      self.new({
+        source: {
+          root: 'http://www.mbta.com/uploadedfiles/',
+          gtfs_suffix: 'MBTA_GTFS.zip',
+          feed_info_suffix: 'feed_info.txt'
+        },
+        local: {
+          root: Pathname.getwd.to_s + "/db/csvs/",
+          gtfs_suffix: 'mbta.zip',
+          version_suffix: 'version.csv'
+        }
+      }).run
+    end
+
 
     private
 
@@ -67,19 +75,19 @@ module Services
     end
 
     def feed_info_path
-      full_path(PATHS[:source][:root], PATHS[:source][:feed_info_suffix])
+      full_path(@paths[:source][:root], @paths[:source][:feed_info_suffix])
     end
 
     def version_path
-      full_path(PATHS[:local][:root], PATHS[:local][:version_suffix])
+      full_path(@paths[:local][:root], @paths[:local][:version_suffix])
     end
 
     def source_file_path
-      full_path(PATHS[:source][:root], PATHS[:source][:gtfs_suffix])
+      full_path(@paths[:source][:root], @paths[:source][:gtfs_suffix])
     end
 
     def local_gtfs_path
-      full_path(PATHS[:local][:root], PATHS[:local][:gtfs_suffix])
+      full_path(@paths[:local][:root], @paths[:local][:gtfs_suffix])
     end
 
     def full_path(root, suffix)

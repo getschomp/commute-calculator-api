@@ -7,5 +7,5 @@ Rails.application.load_tasks
 
 desc 'Get the latest gtfs files if a new version exists'
 task fetch_gtfs: :environment do
-  Services::GtfsFetcher.new.call
+  Services::GtfsFetcher.new.run
 end
