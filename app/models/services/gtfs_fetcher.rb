@@ -1,24 +1,20 @@
 module Services
   class GtfsFetcher
     # gets the mbta schedule data from a file source and saves it in assets
-    require 'pathname'
-    require 'csv'
-    require 'open-uri'
-    require 'uri'
 
     attr_reader :local_path
 
     def initialize(paths)
       @paths = paths
+      @local_path = local_gtfs_path
     end
 
     def run
-      @current_version = current_gtfs_version
-      @last_version = last_gtfs_version
-      @local_path = local_gtfs_path
-      if version_updated?
+      current_version = current_gtfs_version
+      last_version = last_gtfs_version
+      if version_updated?(current_version, last_version)
         make_local_copy(source_file_path.to_s)
-        store_version(@current_version)
+        store_version(current_version)
       end
       self
     end
@@ -51,8 +47,8 @@ module Services
       IO.copy_stream(open(source_path), @local_path)
     end
 
-    def version_updated?
-      @first_version != @last_version
+    def version_updated?(current_version, last_version)
+      current_version != last_version
     end
 
     def current_gtfs_version
