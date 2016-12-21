@@ -1,7 +1,6 @@
 module Services
   class GtfsFetcher
     # gets the mbta schedule data from a file source and saves it in assets
-
     attr_reader :local_path
 
     def initialize(paths)
