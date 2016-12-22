@@ -32,5 +32,8 @@ module CommuteCalculator
     logger.formatter = config.log_formatter
     config.log_tags  = [:subdomain, :uuid]
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+
+    # Include lib at load for json token encoding
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

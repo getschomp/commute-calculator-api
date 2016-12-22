@@ -38,3 +38,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'coveralls', require: false
 
 gem 'bcrypt', '~> 3.1.7'
+# encode and decode HMACSHA256 tokens
+gem 'jwt'
