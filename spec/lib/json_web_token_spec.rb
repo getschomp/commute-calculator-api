@@ -17,8 +17,6 @@ RSpec.describe "json_web_token" do
   it "expires the token" do
     token = JsonWebToken.encode(payload, 1.second.from_now)
     sleep(2.seconds)
-    expect{ JsonWebToken.decode(token) }.to raise_error(
-      JWT::ExpiredSignature
-    )
+    expect(JsonWebToken.decode(token)).to eql(nil)
   end
 end

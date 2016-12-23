@@ -35,5 +35,7 @@ module CommuteCalculator
 
     # Include lib at load for json token encoding
     config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('app/services')
+
   end
 end

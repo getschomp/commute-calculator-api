@@ -8,7 +8,7 @@ module Services
       @local_path = local_gtfs_path
     end
 
-    def run
+    def call
       current_version = current_gtfs_version
       last_version = last_gtfs_version
       if version_updated?(current_version, last_version)
