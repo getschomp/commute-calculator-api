@@ -8,7 +8,6 @@ class AuthenticationController < ApplicationController
     rescue => e
       Rails.logger.warn(e)
       render json: { errors: [e] }, status: :unauthorized
-    end
   end
 
 end
