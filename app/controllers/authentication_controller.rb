@@ -7,7 +7,7 @@ class AuthenticationController < ApplicationController
       render json: { auth_token: authentication }
     rescue => e
       Rails.logger.warn(e)
-      render json: { errors: [GENERIC_HUMANIZED_ERROR] }, status: :unauthorized
+      render json: { errors: [e] }, status: :unauthorized
     end
   end
 
