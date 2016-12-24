@@ -6,6 +6,11 @@
 
 A REST api designed to parse and transverse a public transportation graph and make recommendations on where a person or group of people should live based on supplied parameters. This api will back a commute calculator ui that will supply to the user geometrical definitions of areas of the a city based on various parameters that the user inputs.
 
+## Planning
+
+https://trello.com/b/kDyDUx2I/commute-calculator-api
+ERB diagram to be developed
+
 ## Up and Running
 
 Make sure you have:
@@ -14,7 +19,6 @@ Make sure you have:
 * Rails version: `5`
 
 * Databases: `Postgresql`, `neo4j`
-
 
 * Database initialization:
   `$ rake db:create`
