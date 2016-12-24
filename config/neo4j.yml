@@ -1,0 +1,11 @@
+development:
+  type: serverdb
+  url: <%= ENV['NEO4J_DEV_PATH'] %>
+
+test:
+  type: serverdb
+  url: <%= ENV['NEO4J_TEST_PATH'] %>
+
+production:
+  type: <%= ENV['NEO4J_TYPE'] %>
+  url: <%= ENV['NEO4J_PATH'] %>

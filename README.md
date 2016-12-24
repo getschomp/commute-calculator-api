@@ -13,7 +13,8 @@ Make sure you have:
 
 * Rails version: `5`
 
-* Database: `Postgresql`
+* Databases: `Postgresql`, `neo4j`
+
 
 * Database initialization:
   `$ rake db:create`
