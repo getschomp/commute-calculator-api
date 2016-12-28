@@ -1,9 +1,9 @@
 development:
-  type: serverdb
+  type: http
   url: <%= ENV['NEO4J_DEV_PATH'] %>
 
 test:
-  type: serverdb
+  type: http
   url: <%= ENV['NEO4J_TEST_PATH'] %>
 
 production:

@@ -6,7 +6,7 @@ gem 'puma', '~> 3.0'
 
 # Database
 # Wrapper for graph database neo4j
-gem 'neo4j', '~> 8.0.0'
+gem 'neo4j'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 
