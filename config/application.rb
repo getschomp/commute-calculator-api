@@ -29,6 +29,7 @@ module CommuteCalculator
 
     # Include lib at load for json token encoding
     config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('app/services')
 
     # Include neo4j graph database generator
     config.generators { |g| g.orm :neo4j }
