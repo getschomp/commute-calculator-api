@@ -6,6 +6,12 @@ services:
 
 before_script:
   - psql -c 'create database commute_calculator_test;' -U postgres
+  - rake neo4j:config[test,7474]
+  - rake neo4j:disable_auth[test]
+  - rake neo4j:start[test]
+  - rake neo4j:migrate:all
+
+
 
 dist: trusty
 sudo: false

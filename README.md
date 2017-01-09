@@ -36,11 +36,11 @@ Install the databases for each environment into the project
 `rake neo4j:install[community-3.1.0,development]`
 
 Configure and migrate
-`rake neo4j:migrate:all`
 `rake neo4j:config[test,7474]`
 `rake neo4j:config[development,7575]`
 `rake neo4j:disable_auth[development]`
 `rake neo4j:disable_auth[test]`
+`rake neo4j:migrate:all`
 
 Run the Databases
 `rake neo4j:start[test]`
