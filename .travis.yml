@@ -14,4 +14,4 @@ before_script:
 
 
 dist: trusty
-sudo: false
+sudo: required # service start commands use sudo by default
