@@ -4,12 +4,15 @@ services:
   - postgresql
   - neo4j
 
+before_install:
+ - sudo apt-get install neo4j
+
 before_script:
   - psql -c 'create database commute_calculator_test;' -U postgres
-  - rake neo4j:config[test,7474]
-  - rake neo4j:disable_auth[test]
-  - rake neo4j:start[test]
-  - rake neo4j:migrate:all
+  - bundle exec rake neo4j:config[test,7474]
+  - bundle exec rake neo4j:disable_auth[test]
+  - bundle exec rake neo4j:start[test]
+  - bundle exec rake neo4j:migrate:all
 
 
 
