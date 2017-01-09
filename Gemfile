@@ -34,6 +34,10 @@ group :development, :test do
   gem 'rb-readline', '~> 0.5.3'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 # Suggestions
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

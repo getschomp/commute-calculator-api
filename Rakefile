@@ -6,6 +6,7 @@ require_relative 'config/application'
 Rails.application.load_tasks
 
 desc 'Get the latest gtfs files if a new version exists'
+
 task fetch_gtfs: :environment do
   Services::GtfsFetcher.new.call
 end

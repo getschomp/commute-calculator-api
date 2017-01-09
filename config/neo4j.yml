@@ -1,10 +1,10 @@
 development:
-  type: http
-  url: <%= ENV['NEO4J_DEV_PATH'] %>
+  type: server_db
+  url: http://localhost:7575
 
 test:
-  type: http
-  url: <%= ENV['NEO4J_TEST_PATH'] %>
+  type: server_db
+  url: http://localhost:7474
 
 production:
   type: <%= ENV['NEO4J_TYPE'] %>

@@ -27,9 +27,9 @@ module CommuteCalculator
     config.log_tags  = [:subdomain, :uuid]
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
+
     # Include lib at load for json token encoding
     config.autoload_paths << Rails.root.join('lib')
-    config.autoload_paths << Rails.root.join('app/services')
 
     # Include neo4j graph database generator
     config.generators { |g| g.orm :neo4j }

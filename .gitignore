@@ -3,3 +3,5 @@
 /tmp
 /spec/tmp
 secrets.yml
+/db/neo4j/development
+/db/neo4j/test

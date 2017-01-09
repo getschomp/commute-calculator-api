@@ -1,15 +1,19 @@
 module Nodes
-  class Agency < ApplicationRecord
+  class Agency
     include Neo4j::ActiveNode
 
     property :agency_id, type: Integer
-    property :agency_name, type: String
-    property :agency_url, type: String
-    property :agency_timezone, type: String
-    property :agency_lang, type: String
-    property :agency_phone, type: String
+    property :name, type: String
+    property :url, type: String
+    property :timezone, type: String
+    property :lang, type: String
+    property :phone, type: String
 
     property :created_at
     property :updated_at
+
+    validates :name, presence: true
+    validates :url, presence: true
+    validates :timezone, presence: true
   end
 end
