@@ -2,6 +2,7 @@ language: ruby
 
 services:
   - postgresql
+  - neo4j
 
 before_script:
   - psql -c 'create database commute_calculator_test;' -U postgres
