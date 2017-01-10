@@ -1,12 +1,5 @@
 language: ruby
 
-before_install:
-  - bundle exec rake neo4j:install[test]
-  - bundle exec rake neo4j:config[test,7474]
-  - bundle exec rake neo4j:disable_auth[test]
-  - bundle exec rake neo4j:start[test]
-  - bundle exec rake neo4j:migrate:all
-
 services:
   - postgresql
 
@@ -15,3 +8,8 @@ jdk:
 
 before_script:
   - psql -c 'create database commute_calculator_test;' -U postgres
+  - bundle exec rake neo4j:install[test]
+  - bundle exec rake neo4j:config[test,7474]
+  - bundle exec rake neo4j:disable_auth[test]
+  - bundle exec rake neo4j:start[test]
+  - bundle exec rake neo4j:migrate:all
