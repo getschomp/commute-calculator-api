@@ -1,4 +1,5 @@
 language: ruby
+sudo: required
 
 services:
   - postgresql
@@ -7,8 +8,9 @@ jdk:
     - oraclejdk8  # needed for local Neo4j 2.0+
 
 before_script:
+  - bundle
   - psql -c 'create database commute_calculator_test;' -U postgres
-  - bundle exec rake neo4j:install[test]
+  - bundle exec rake neo4j:install[community-3.1.0, test]
   - bundle exec rake neo4j:config[test,7474]
   - bundle exec rake neo4j:disable_auth[test]
   - bundle exec rake neo4j:start[test]
