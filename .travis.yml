@@ -8,6 +8,7 @@ jdk:
     - oraclejdk8  # needed for local Neo4j 2.0+
 
 install:
+  - bundle install
   - bundle exec rake neo4j:install[community-3.1.0,test]
   - bundle exec rake neo4j:config[test,7474]
   - bundle exec rake neo4j:disable_auth[test]
