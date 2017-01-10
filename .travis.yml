@@ -1,15 +1,17 @@
 language: ruby
 
-before_script:
-  - psql -c 'create database commute_calculator_test;' -U postgres
+before_install:
+  - bundle exec rake neo4j:install[test]
   - bundle exec rake neo4j:config[test,7474]
   - bundle exec rake neo4j:disable_auth[test]
   - bundle exec rake neo4j:start[test]
   - bundle exec rake neo4j:migrate:all
 
+services:
+  - postgresql
+
 jdk:
     - oraclejdk8  # needed for local Neo4j 2.0+
 
-services:
-  - postgresql
-  - neo4j
+before_script:
+  - psql -c 'create database commute_calculator_test;' -U postgres
