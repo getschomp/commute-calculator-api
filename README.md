@@ -59,8 +59,6 @@ GTFS
 
 GeoJSON
 
-Docker
-
 React based ui (separate repo)
 
 ## Services

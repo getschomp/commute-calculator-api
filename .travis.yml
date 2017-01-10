@@ -1,12 +1,5 @@
 language: ruby
 
-services:
-  - postgresql
-  - neo4j
-
-before_install:
- - sudo apt-get install neo4j
-
 before_script:
   - psql -c 'create database commute_calculator_test;' -U postgres
   - bundle exec rake neo4j:config[test,7474]
@@ -14,7 +7,9 @@ before_script:
   - bundle exec rake neo4j:start[test]
   - bundle exec rake neo4j:migrate:all
 
+jdk:
+    - oraclejdk8  # needed for local Neo4j 2.0+
 
-
-dist: trusty
-sudo: required # service start commands use sudo by default
+services:
+  - postgresql
+  - neo4j
