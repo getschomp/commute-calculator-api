@@ -14,6 +14,7 @@ install:
   - bundle exec rake neo4j:start[test]
   - bundle exec rake neo4j:disable_auth[test]
   - bundle exec rake neo4j:restart[test]
+  - sleep 10s
 
 before_script:
   - psql -c 'create database commute_calculator_test;' -U postgres
