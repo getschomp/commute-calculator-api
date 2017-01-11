@@ -1,0 +1,2 @@
+"feed_publisher_name","feed_publisher_url","feed_lang","feed_start_date","feed_end_date","feed_version"
+"MBTA","http://www.mbta.com","EN",20161216,20170324,"Winter 2017 version 1D, 12/16/16"
