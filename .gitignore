@@ -5,4 +5,5 @@
 secrets.yml
 /db/neo4j/development
 /db/neo4j/test
-/spec/support/temp/*
+/spec/support/temp/mbta.zip
+/spec/support/temp/version.csv
