@@ -21,7 +21,7 @@ Make sure you have:
 
 * Rails version: `5`
 
-### Database Setup
+#### Database Setup
 
 ##### Postgresql
 
@@ -67,7 +67,7 @@ You should be able to navigate to `http://localhost:7575` or `http://localhost:7
 
 * Run the tests with: `rspec spec` (make sure neo4j and postgres are up and in the proper state)
 
-# Other Tech
+## Other Tech
 
 GTFS
 
