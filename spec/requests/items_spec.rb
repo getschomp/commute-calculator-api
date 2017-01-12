@@ -23,7 +23,7 @@ RSpec.describe "Items", type: :request do
 
     describe "GET /items" do
       it "returns a 200 sucess" do
-        get(items_path, nil, Authorization: token)
+        get items_path, params: {}, headers: { Authorization: token }
         expect(response).to have_http_status(200)
       end
     end

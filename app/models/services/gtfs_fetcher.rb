@@ -51,21 +51,25 @@ module Services
     end
 
     def current_gtfs_version
-      feed = CSV.new(open(feed_info_path.to_s), headers: :first_row)
-      feed.each { |row| return row[5] }
+      get_version(feed_info_path.to_s)
     end
 
     def last_gtfs_version
       make_version_file_if_needed
-      IO.read(version_path)
+      get_version(version_path)
+    end
+
+    def get_version(path)
+      CSV.read(path)[1]
     end
 
     def store_version(version)
       make_version_file_if_needed
-      File.open(version_path, 'w') { |f| f.write(version) }
+      IO.copy_stream(open(feed_info_path), version_path)
     end
 
     def make_version_file_if_needed
+      Dir.mkdir(@paths[:local][:root]) unless File.exist?(@paths[:local][:root])
       File.new(version_path, "w+") unless File.exist?(version_path)
     end
 

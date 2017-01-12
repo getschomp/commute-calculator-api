@@ -1,0 +1,11 @@
+development:
+  type: server_db
+  url: http://localhost:7575
+
+test:
+  type: server_db
+  url: http://localhost:7474
+
+production:
+  type: <%= ENV['NEO4J_TYPE'] %>
+  url: <%= ENV['NEO4J_PATH'] %>
