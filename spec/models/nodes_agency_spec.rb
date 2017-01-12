@@ -4,7 +4,8 @@ describe Nodes::Agency do
   describe '.create' do
     it 'persists a user with valid attributes' do
       agency = Nodes::Agency.create(
-        name: 'Trans-Siberian', url: 'www.ts.com', timezone: 'OMST')
+        name: 'Trans-Siberian', url: 'www.ts.com', timezone: 'OMST'
+      )
 
       expect(agency).to be_persisted
     end
