@@ -13,7 +13,7 @@ module Services
       last_version = last_gtfs_version
       if version_updated?(current_version, last_version)
         make_local_copy(source_file_path.to_s)
-        store_version(current_version)
+        store_version
       end
       self
     end
@@ -63,7 +63,7 @@ module Services
       CSV.read(path)[1]
     end
 
-    def store_version(version)
+    def store_version
       make_version_file_if_needed
       IO.copy_stream(open(feed_info_path), version_path)
     end

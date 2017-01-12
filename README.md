@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/repos/5855b969bd6f982c76005070/badges/21e0aa7200a802977aae/gpa.svg)](https://codeclimate.com/repos/5855b969bd6f982c76005070/feed)
+[![Code Climate](https://codeclimate.com/github/getschomp/commute-calculator-api/badges/gpa.svg)](https://codeclimate.com/github/getschomp/commute-calculator-api)
 [![Build Status](https://travis-ci.org/getschomp/commute-calculator-api.svg?branch=master)](https://travis-ci.org/getschomp/commute-calculator-api)
 [![Coverage Status](https://coveralls.io/repos/github/getschomp/commute-calculator-api/badge.svg?branch=master)](https://coveralls.io/github/getschomp/commute-calculator-api?branch=master)
 
