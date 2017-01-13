@@ -13,15 +13,16 @@ ERB diagram to be developed
 
 ## Up and Running
 
-
-### Install
+### Languages/Frameworks
 
 Make sure you have:
 * Ruby version: `2.3.1`
 
 * Rails version: `5`
 
-#### Database Setup
+* Java Development Kit: jdk8 (required by neo4j)
+
+### Database Setup
 
 ##### Postgresql
 
@@ -60,7 +61,7 @@ rake neo4j:start[development]
 
 You should be able to navigate to `http://localhost:7575` or `http://localhost:7474`  in your browser and see a neo4j ui with a display of any data and basic tutorials.
 
-#### Running the api
+### Running
 
 * Run the server with: `rails s` and navigate to `http://localhost:3001`
 (The default port is set to 3001 so that a second server can be easily run alongside the api using rails defaults)
