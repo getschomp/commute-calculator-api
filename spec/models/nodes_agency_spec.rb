@@ -2,19 +2,34 @@ require 'rails_helper'
 
 describe Nodes::Agency do
   describe '.create' do
-    it 'persists a user with valid attributes' do
-      agency = Nodes::Agency.create(
-        name: 'Trans-Siberian', url: 'www.ts.com', timezone: 'OMST'
-      )
 
-      expect(agency).to be_persisted
+    context 'with valid attributes' do
+
+      before :each do
+        @agency = Nodes::Agency.create(
+          name: 'Trans-Siberian', url: 'www.ts.com', timezone: 'OMST'
+        )
+      end
+
+      it 'persists' do
+        expect(@agency).to be_persisted
+      end
+
     end
 
-    it 'does not persist if attributes are not valid' do
-      agency = Nodes::Agency.create
+    context 'without valid attributes' do
 
-      expect(agency).not_to be_persisted
-      expect(agency.errors[:name]).to include("can't be blank")
+      let (:agency) { agency = Nodes::Agency.create }
+
+      it 'does not persist' do
+        agency = Nodes::Agency.create
+      end
+
+      it 'has expected errors' do
+        expect(agency.errors[:name]).to include("can't be blank")
+      end
+
     end
+
   end
 end
