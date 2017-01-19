@@ -6,22 +6,27 @@ RSpec.describe Services::GtfsFetcher, type: :service do
 
     before :each do
       FileUtils.rm_rf Dir.glob("spec/support/temp/*")
+      FileUtils.rm_rf Dir.glob( "/db/neo4j/#{Rails.env}/import/boston_test")
+      @common_paths = {
+        system_name: 'boston_test',
+        source: {
+          root: Rails.root.join('spec/support/fixtures/'),
+          gtfs_suffix: 'mbta.zip',
+          feed_info_suffix: 'feed_info.txt'
+        }
+      }
     end
 
     context 'first run' do
       before :each do
-        @fetcher = Services::GtfsFetcher.new({
-          source: {
-            root: Rails.root.join('spec/support/fixtures/'),
-            gtfs_suffix: 'mbta.zip',
-            feed_info_suffix: 'feed_info.txt'
-          },
+        paths = @common_paths.merge(
           local: {
             root: Rails.root.join('spec/support/temp/'),
             gtfs_suffix: 'mbta.zip',
             version_suffix: 'version.csv'
           }
-        }).call
+        )
+        @fetcher = Services::GtfsFetcher.new(paths).call
       end
 
       it 'fetches the correct local path' do
@@ -36,21 +41,17 @@ RSpec.describe Services::GtfsFetcher, type: :service do
 
     context 'No new versions' do
       before :each do
-        @fetcher = Services::GtfsFetcher.new({
-          source: {
-            root: Rails.root.join('spec/support/fixtures/'),
-            gtfs_suffix: 'mbta.zip',
-            feed_info_suffix: 'feed_info.txt'
-          },
+        paths = @common_paths.merge({
           local: {
             root: Rails.root.join('spec/support/fixtures/'),
             gtfs_suffix: 'file_that_shouldnt_exist.zip',
             version_suffix: 'feed_info.txt'
           }
-        }).call
+        })
+        @fetcher = Services::GtfsFetcher.new(paths).call
       end
 
-      it 'does not fetches a new file' do
+      it 'does not fetch a new file' do
         file_path = Rails.root + @fetcher.local_path.to_s
         expect(File.exist?(file_path)).to be false
       end

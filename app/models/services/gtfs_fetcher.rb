@@ -1,11 +1,14 @@
 module Services
   class GtfsFetcher
     # gets the mbta schedule data from a file source and saves it in assets
+    include ZipUtils
+
     attr_reader :local_path
 
     def initialize(paths)
       @paths = paths
       @local_path = local_gtfs_path
+      @destination_path = Pathname.getwd.to_s + "/db/neo4j/#{Rails.env}/import/" + @paths[:system_name]
     end
 
     def call
@@ -13,31 +16,11 @@ module Services
       last_version = last_gtfs_version
       if version_updated?(current_version, last_version)
         make_local_copy(source_file_path.to_s)
+        unzip(local_gtfs_path, @destination_path)
         store_version
       end
       self
     end
-
-    # For now this is a class method initalized based of the @paths to MBTA data.
-    # Since the GTFS spec is the same for most major cities,
-    # In the future, many Gtfs Fetchers may be initalized with various
-    # @paths based on a json file or similar
-    # TODO: see if there is a source api to call that has an index of paths
-    def self.run_for_mbta
-      self.new({
-        source: {
-          root: 'http://www.mbta.com/uploadedfiles/',
-          gtfs_suffix: 'MBTA_GTFS.zip',
-          feed_info_suffix: 'feed_info.txt'
-        },
-        local: {
-          root: Pathname.getwd.to_s + "/db/csvs/",
-          gtfs_suffix: 'mbta.zip',
-          version_suffix: 'version.csv'
-        }
-      }).run
-    end
-
 
     private
 
@@ -60,7 +43,7 @@ module Services
     end
 
     def get_version(path)
-      CSV.read(path)[1]
+      (Rails.env == 'test' ? CSV.read(path) : CSV.parse(open(path).read))[1]
     end
 
     def store_version
