@@ -50,13 +50,13 @@ rake neo4j:config[test,7474]
 rake neo4j:config[development,7575]
 rake neo4j:disable_auth[development]
 rake neo4j:disable_auth[test]
-rake neo4j:migrate:all
 ```
 
 Run the Databases
 ```ruby
 rake neo4j:start[test]
 rake neo4j:start[development]
+rake neo4j:migrate:all
 ```
 
 You should be able to navigate to `http://localhost:7575` or `http://localhost:7474`  in your browser and see a neo4j ui with a display of any data and basic tutorials.
